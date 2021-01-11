@@ -1,0 +1,17 @@
+@layout('layouts/master')
+
+@section('main')
+  <main>
+  
+    <h2> Hello {{ inspect(session.get('user').email)}} </h2>
+      
+
+    @each(user in users)
+      <article>
+        <h2>
+          <a href="/"> {{ user.id }} </a>
+        </h2>
+      </article>
+    @endeach
+  </main>
+@endsection

@@ -1,0 +1,39 @@
+@layout('layouts/master')
+
+@section('main')
+  <main>
+    @if(flashMessages.has('success'))
+   
+
+    <div class="alert alert-primary" role="alert">
+        {{ flashMessages.get('success') }}
+      </div>
+  @endif
+ 
+    <form action="{{ route('UsersController.store') }}" method="POST">
+        <div class="mb-3">
+            <label for="exampleInputName" class="form-label">Name</label>
+            <input type="text" class="form-control" name="name" >
+            @if(flashMessages.has('errors.name'))
+            {{ flashMessages.get('errors.name') }}
+          @endif
+          </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <input type="email" class="form-control" name="email" aria-describedby="emailHelp">
+          @if(flashMessages.has('errors.email'))
+          {{ flashMessages.get('errors.email') }}
+        @endif
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" class="form-control" name="password" id="exampleInputPassword1">
+          @if(flashMessages.has('errors.password'))
+          {{ flashMessages.get('errors.password') }}
+        @endif
+        </div>
+      
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+  </main>
+@endsection
